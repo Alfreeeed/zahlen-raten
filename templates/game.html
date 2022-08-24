@@ -3,12 +3,13 @@
     <body>
         <h1>Was geht {{ tasks['username'] }}</h1>
         <form>
-            <input type=text name=guessed_number>
-            <input type=submit name=submit value=Enter>
+            <label for="guessed_number">Guess a number</label>
+            <input type=text name=guessed_number placeholder="Enter your number" >
+            <input type=submit name=submit value=Enter aria-label="Submit your guessed number">
         </form>
         {% if tasks['task'] %}
-            <h1>{{ tasks['task'][0] }}</h1>
-            <img src="/static/images/{{ tasks['task'][1] }}">
+            <h2>{{ tasks['task'][0] }}</h2>
+            <img src="/static/images/{{ tasks['task'][1] }}" alt="">
         {% endif %}
         
     </body> 

@@ -9,7 +9,9 @@ create_players = """ CREATE TABLE IF NOT EXISTS players (
 create_games = """ CREATE TABLE IF NOT EXISTS games (
     id integer PRIMARY KEY,
     player_id integer,
-    tries integer
+    tries integer,
+    finished bool,
+    FOREIGN KEY (player_id) REFERENCES players(id)
 ) """
 # create_highscore = """ """
 
@@ -27,18 +29,28 @@ class DB:
             print("Failed connecting to database with error",e)
 
     def add_player(self,name):
-        self.cursor.execute(f''' SELECT id FROM players ''')
+        self.cursor.execute(f""" SELECT id FROM players WHERE name = '{name}'""")
         # print(self.cursor.fetchall())
         if len(self.cursor.fetchall()) == 0:
             self.cursor.execute(f''' INSERT INTO players (name) VALUES ('{name}') ''')
             print(f"no player with name {name} in table. inserting...")
         self.conn.commit()
+    
+    def add_game(self, player_name, tries, finished=True):
+        #(SELECT id FROM players WHERE name = '{player_name}')
+        self.cursor.execute(f""" INSERT INTO games (player_id, tries, finished) VALUES ((SELECT id FROM players WHERE name = '{player_name}'), {tries}, {finished}) """)
+        self.conn.commit()
+    
+    def get_top_10(self):
+        self.cursor.execute(""" SELECT (SELECT name FROM players WHERE id = player_id), MIN(tries) FROM games WHERE finished = 1 GROUP BY 1 ORDER BY tries LIMIT 10 """)
+        return self.cursor.fetchall()
 
     def drop_db(self):
         self.conn.close()
         os.remove("game.db")
 
 db = DB()
-db.cursor.execute("select * from players")
-print(db.cursor.fetchall())
+print(db.get_top_10())
+# db.cursor.execute("select * from players")
+# print(db.cursor.fetchall())
 # db.drop_db()

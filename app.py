@@ -10,29 +10,31 @@ db = DB()
 
 wanted_number = random.randint(1, 100)
 print("wanted number is",wanted_number)
-@app.route('/game')
+@app.route('/g')
 def game():
+    print("in game")
     global USERNAME
-    print(USERNAME)
     my_tasks = {
         "username": USERNAME
     }
     args = request.args
+    print("args",len(args))
     if len(args) > 0:
         guessed_number = args.get("guessed_number")
         try:
-            
             guessed_number = int(guessed_number)
             if guessed_number > wanted_number:
                 task = ["Eingegebene Nummer ist größer als die gesuchte Nummer!","higher.png"]
+                print("higher",task)
             elif guessed_number < wanted_number:
                 task = ["Eingegebene Nummer ist kleiner als die gesuchte Nummer!","lower.jpg"]
+                print("lower",task)
             else:
                 task = ["Du hast die gesuchte Nummer gefunden!","russian-president-meme.gif"]
             my_tasks["task"] = task
         except:
             my_tasks["task"] = ["Du Ficker gib ne Zahl ein!"]
-    print(my_tasks)
+    print("my tasks:",my_tasks)
 
     return render_template("game.html", tasks=my_tasks)
 

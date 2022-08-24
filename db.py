@@ -38,7 +38,7 @@ class DB:
         self.conn.close()
         os.remove("game.db")
 
-db = DB()
-db.cursor.execute("select * from players")
-print(db.cursor.fetchall())
+# db = DB()
+# db.cursor.execute("select * from players")
+# print(db.cursor.fetchall())
 # db.drop_db()

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+    <title>Trumpepe</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/style.css">
     <body>
         <table class="wrapper">
@@ -17,20 +19,20 @@
             {% endfor %}
         </table>
         <div id='game'>
-            <h1 class='text'>Was geht {{ tasks['username'] }}</h1>
-            <form>
-                <input type=text name=guessed_number>
-                <input type=submit name=submit value=Enter>
-            </form>
-            {% if tasks['task'] %}
-                <h1 class='text'>{{ tasks['task'][0] }}</h1>
-                <img id='image' src="/static/images/{{ tasks['task'][1] }}">
-            {% endif %}
-            <div style='clear: both;'></div>
+            <div class='input'>
+                <h1 class='text'>Was geht {{ tasks['username'] }}</h1>
+                <form>
+                    <input type=text name=guessed_number>
+                    <input type=submit name=submit value=Enter>
+                </form>
+                {% if tasks['task'] %}
+                    <h1 class='text'>{{ tasks['task'][0] }}</h1>
+                    <img id='image' src="/static/images/{{ tasks['task'][1] }}">
+                {% endif %}
+                <div style='clear: both;'></div>
+            </div>
+            <p style='overflow: auto'>Current tries: </p>
         </div>
-        <!-- <div class="wrapper"> -->
-            
-          <!-- </div> -->
-
+        
     </body> 
 </html>

@@ -36,10 +36,11 @@ def game():
             else:
                 task = ["Du hast die gesuchte Nummer gefunden!","russian-president-meme.gif"]
                 db.add_game(USERNAME, TRIES)
+                my_tasks['highscore'] = db.get_top_10()
             my_tasks["task"] = task
         except Exception as e:
             print("Execption:",e)
-            my_tasks["task"] = ["Du Ficker gib ne Zahl ein!"]
+            my_tasks["task"] = ["Du Ficker gib ne Zahl ein!","fake_news.webp"]
     print("my tasks:",my_tasks)
 
     return render_template("game.html", tasks=my_tasks, len=len(my_tasks['highscore']))

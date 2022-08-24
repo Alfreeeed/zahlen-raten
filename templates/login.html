@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+    <title>Trumpepe</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
     <body>
-        <form>
-            <input type=text name=username>
-            <input type=submit name=submit value=Enter>
-        </form>
+        <div class='input'>
+            <h1 class='text'>Wer bist du?</h1>
+            <form>
+                <input type=text name=username>
+                <input type=submit name=submit value=Enter>
+            </form>
+        </div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
     <title>Trumpepe</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -27,17 +27,16 @@
                 <h1 class='text'>Was geht {{ tasks['username'] }}</h1>
                 <form>
                     <label for="guessed_number">Dein Guess:</label>
-                    <input type=text name=guessed_number>
-                    <input type=submit name=submit value=Enter>
+                    <input type=text name=guessed_number placeholder="Gib deine Zahl ein">
+                    <input type=submit name=submit value=Enter aria-label="Deine geratene Zahl speichern">
                 </form>
                 {% if tasks['task'] %}
                     <h1 class='text'>{{ tasks['task'][0] }}</h1>
-                    <img id='image' src="/static/images/{{ tasks['task'][1] }}">
+                    <img id='image' src="/static/images/{{ tasks['task'][1] }}" alt="">
                 {% endif %}
                 <div style='clear: both;'></div>
             </div>
             <h1 class="text" style="padding-left: 20px;">Das war dein {{ tasks['try'] }}er Versuch</p>
         </div>
-        
     </body> 
 </html>

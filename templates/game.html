@@ -4,20 +4,24 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/style.css">
     <body>
-        <table class="wrapper">
-            <tr>
-                <th>Pos</th>
-                <th>Name</th>
-                <th>Tries</th>
-            </tr>
-            {% for i in range(0,len) %}
+        <div class="wrapper">
+            <img class="pepe" src="/static/images/pepe/pepe_was_ist_dein_name.png">
+            <table>
                 <tr>
-                    <td>{{ i+1 }}</td>
-                    <td>{{ tasks['highscore'][i][0] }}</td>
-                    <td>{{ tasks['highscore'][i][1] }}</td>
+                    <th>Pos</th>
+                    <th>Name</th>
+                    <th>Tries</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for i in range(0,len) %}
+                    <tr>
+                        <td>{{ i+1 }}</td>
+                        <td>{{ tasks['highscore'][i][0] }}</td>
+                        <td>{{ tasks['highscore'][i][1] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
         <div id='game'>
             <div class='input'>
                 <h1 class='text'>Was geht {{ tasks['username'] }}</h1>
@@ -31,7 +35,7 @@
                 {% endif %}
                 <div style='clear: both;'></div>
             </div>
-            <p style='overflow: auto'>Current tries: </p>
+            <h1 class="text" style="padding-left: 20px;">Das war dein {{ tasks['try'] }}er Versuch</p>
         </div>
         
     </body> 

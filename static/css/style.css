@@ -8,7 +8,15 @@ body {
     display: flex;
     /* justify-content: center; */
     /* align-items: center; */
-    height: 100vh;
+    /* height: 100vh; */
+    float: right;
+    padding-right: 20px;
+}
+
+.pepe {
+    padding-right: 20px;
+    max-width: 200px;
+    height: auto;
 }
 
 #image {
@@ -30,7 +38,7 @@ table {
     /* border-radius: 10px; */
     border-spacing: 0;
     /* text-align: center; */
-    float: right;
+    
 }
 
 caption {

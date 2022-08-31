@@ -42,7 +42,7 @@ class DB:
         self.conn.commit()
     
     def get_top_10(self):
-        self.cursor.execute(""" SELECT (SELECT name FROM players WHERE id = player_id), MIN(tries) FROM games WHERE finished = 1 GROUP BY 1 ORDER BY tries LIMIT 10 """)
+        self.cursor.execute(""" SELECT (SELECT name FROM players WHERE id = player_id), MIN(tries) FROM games WHERE finished = 1 GROUP BY 1 ORDER BY tries,player_id LIMIT 10 """)
         return self.cursor.fetchall()
 
     def drop_db(self):
@@ -50,7 +50,7 @@ class DB:
         os.remove("game.db")
 
 db = DB()
-print(db.get_top_10())
+# print(db.get_top_10())
 # db.cursor.execute("select * from players")
 # print(db.cursor.fetchall())
 # db.drop_db()

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from db import DB
 import random
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -106,6 +107,6 @@ def unit_tests():
     get_guess_result(50,result,True)
     assert result['task'][1] == 'pepe_sieg.gif'
 
-
+serve(app, host='0.0.0.0', port=8080, threads=1)
 # unit_tests()
         

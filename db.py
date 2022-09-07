@@ -42,15 +42,26 @@ class DB:
         self.conn.commit()
     
     def get_top_10(self):
-        self.cursor.execute(""" SELECT (SELECT name FROM players WHERE id = player_id), MIN(tries) FROM games WHERE finished = 1 GROUP BY 1 ORDER BY tries,player_id LIMIT 10 """)
+        self.cursor.execute(""" SELECT (SELECT name FROM players WHERE id = player_id), tries FROM games WHERE finished = 1 ORDER BY tries,player_id LIMIT 10 """)
         return self.cursor.fetchall()
+
+    def get_pepe_count(self, versuch):
+        self.cursor.execute(f""" SELECT count(*) FROM games WHERE tries < {str(versuch)}""")
+        return self.cursor.fetchone()[0]
+
+    def execute(self,query):
+        self.cursor.execute(query)
 
     def drop_db(self):
         self.conn.close()
         os.remove("game.db")
 
-db = DB()
+# db = DB()
 # print(db.get_top_10())
 # db.cursor.execute("select * from players")
 # print(db.cursor.fetchall())
 # db.drop_db()
+# print(db.get_top_10())
+# print(db.get_pepe_count(3))
+# db.execute(""" UPDATE games SET tries = 420 WHERE player_id = (SELECT id FROM players WHERE name = 'Snoop Dogg')""")
+# db.conn.commit()

@@ -4,6 +4,14 @@ body {
     background: rgba(65, 65, 65, 0.473);
 }
 
+.buttons {
+    position:absolute; 
+    margin-left:-50px;
+    left:50%;
+    width:100px;
+    bottom:0px;
+}
+
 .wrapper {
     display: flex;
     /* justify-content: center; */

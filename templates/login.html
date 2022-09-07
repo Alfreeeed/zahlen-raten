@@ -3,14 +3,21 @@
     <title>Trumpepe</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="/static/css/style.css">
-    <body>
+    <body style="overflow: hidden;">
         <div class='input'>
             <h1 class='text'>Wer bist du?</h1>
             <form>
-                <label for="username">Username</label>
+                <label style="font-weight: bold;" for="username">Name:</label>
                 <input type=text name=username placeholder="Gib dein Name ein">
                 <input type=submit name=submit value=Enter aria-label="Den eingegebenen Namen speichern">
             </form>
         </div>
+        <div class="wrapper">
+            <img class="pepe" alt="pepe_was_ist_dein_name.png" src="/static/images/pepe/pepe_was_ist_dein_name.png">
+        </div>
+        <div>
+            <img style="padding: 100px; max-height: 500px; max-width: 800px;" alt="Werbung um diese App zu finanzieren" src="/static/images/Anzeigenentwurf-klein.jpg">
+        </div>
+        <button aria-label="Hier kannst du all dein Geld ausgeben" style="background-color: rgb(17, 255, 0);position: fixed;bottom: 0;right: 0; margin: 5px;"><h1 style="font-size: 99px;">Zum Shop</h1></button>   
     </body>
 </html>

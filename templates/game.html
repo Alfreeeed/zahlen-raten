@@ -5,7 +5,12 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <body>
         <div class="wrapper">
-            <img class="pepe" src="/static/images/pepe/pepe_was_ist_dein_name.png">
+            <div>
+                <button aria-label="Hier kannst du all dein Geld ausgeben" style="background-color: rgb(17, 255, 0);position: fixed;bottom: 0;right: 0; margin: 5px;"><h1 style="font-size: 99px;">Zum Shop</h1></button>
+            </div>
+            <div>
+                <img class="pepe" alt="{{ tasks['pepe'] }}" src="/static/images/pepe/{{ tasks['pepe'] }}">
+            </div>
             <table>
                 <tr>
                     <th>Pos</th>
@@ -20,23 +25,33 @@
                     </tr>
                 {% endfor %}
             </table>
+            
         </div>
         
         <div id='game'>
             <div class='input'>
                 <h1 class='text'>Was geht {{ tasks['username'] }}</h1>
                 <form>
-                    <label for="guessed_number">Dein Guess:</label>
+                    <label style="font-weight: bold;" for="guessed_number">Dein Guess:</label>
                     <input type=text name=guessed_number placeholder="Gib deine Zahl ein">
                     <input type=submit name=submit value=Enter aria-label="Deine geratene Zahl speichern">
                 </form>
                 {% if tasks['task'] %}
                     <h1 class='text'>{{ tasks['task'][0] }}</h1>
-                    <img id='image' src="/static/images/{{ tasks['task'][1] }}" alt="">
+                    <img id='image' src="/static/images/{{ tasks['task'][1] }}" alt="/static/images/{{ tasks['task'][1] }}">
                 {% endif %}
                 <div style='clear: both;'></div>
             </div>
-            <h1 class="text" style="padding-left: 20px;">Das war dein {{ tasks['try'] }}er Versuch</p>
+            {% if tasks['try'] and tasks['try'] > 0 %}
+                <h1 class="text" style="padding-left: 20px;">Das war dein {{ tasks['try'] }}er Versuch</p>
+            {% endif %}
+        </div>
+        <div>
+            <form>
+                <button aria-label="Neues Spiel starten" style="position:absolute; margin-bottom:5px; margin-left:-45px;left:45%;width:100px;bottom:0px;" type="submit" name="action" value="neues_spiel">Neues Spiel</button>
+                <button aria-label="Zurück zum Login" style="position:absolute; margin-bottom:5px; margin-left:-55px;left:55%;width:100px;bottom:0px;" type="submit" name="action" value="zum_login">Zum Login</button>
+            </form>
+            
         </div>
     </body> 
 </html>
